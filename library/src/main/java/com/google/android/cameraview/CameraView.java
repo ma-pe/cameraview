@@ -114,8 +114,8 @@ public class CameraView extends FrameLayout {
             mImpl = new Camera2(mCallbacks, preview, context);
             Log.d("ReactNative", "API 2");
         } else {
-            mImpl = new Camera2(mCallbacks, preview, context);
-            //mImpl = new Camera2Api23(mCallbacks, preview, context);
+//            mImpl = new Camera2(mCallbacks, preview, context);
+            mImpl = new Camera2Api23(mCallbacks, preview, context);
             Log.d("ReactNative", "API 2 - 23");
         }
 
@@ -292,7 +292,7 @@ public class CameraView extends FrameLayout {
             //store the state and restore this state after fall back to Camera1
             Parcelable state=onSaveInstanceState();
             // Camera2 uses legacy hardware layer; fall back to Camera1
-            mImpl = new Camera1(mCallbacks, createPreviewImpl(getContext()));
+            //mImpl = new Camera1(mCallbacks, createPreviewImpl(getContext()));
             onRestoreInstanceState(state);
             mImpl.start();
         }

@@ -17,6 +17,7 @@
 package com.google.android.cameraview;
 
 import android.annotation.SuppressLint;
+import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
@@ -28,6 +29,7 @@ import android.view.SurfaceHolder;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
@@ -620,11 +622,27 @@ class Camera1 extends CameraViewImpl implements MediaRecorder.OnInfoListener,
         if (isCameraOpened()) {
             final List<String> modes = mCameraParameters.getSupportedFocusModes();
             Log.d("ReactNative", "FOCUS_MODE_CONTINUOUS_PICTURE, " + String.valueOf(modes.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)));
+            Log.d("ReactNative", "FOCUS_MODE_CONTINUOUS_VIDEO, " + String.valueOf(modes.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)));
             Log.d("ReactNative", "FOCUS_MODE_AUTO, " + String.valueOf(modes.contains(Camera.Parameters.FOCUS_MODE_AUTO)));
             Log.d("ReactNative", "FOCUS_MODE_FIXED, " + String.valueOf(modes.contains(Camera.Parameters.FOCUS_MODE_FIXED)));
             Log.d("ReactNative", "FOCUS_MODE_INFINITY, " + String.valueOf(modes.contains(Camera.Parameters.FOCUS_MODE_INFINITY)));
             Log.d("ReactNative", "FOCUS_MODE_MACRO, " + String.valueOf(modes.contains(Camera.Parameters.FOCUS_MODE_MACRO)));
             Log.d("ReactNative", "FOCUS_MODE_EDOF, " + String.valueOf(modes.contains(Camera.Parameters.FOCUS_MODE_EDOF)));
+
+//            Rect focusArea = new Rect();
+//            focusArea.set(0,
+//                    0,
+//                    1,
+//                    1;
+//            ArrayList<Camera.Area> focusAreas = new ArrayList<>();
+//            focusAreas.add(new Camera.Area(focusArea, 1000));
+//
+//            mCameraParameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+//            mCameraParameters.setFocusAreas(focusAreas);
+//            camera.setParameters(cameraParameters);
+//
+//            camera.autoFocus(this);
+
             if (autoFocus && modes.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
                 mCameraParameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
             } else if (modes.contains(Camera.Parameters.FOCUS_MODE_FIXED)) {
