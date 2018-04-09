@@ -629,20 +629,6 @@ class Camera1 extends CameraViewImpl implements MediaRecorder.OnInfoListener,
             Log.d("ReactNative", "FOCUS_MODE_MACRO, " + String.valueOf(modes.contains(Camera.Parameters.FOCUS_MODE_MACRO)));
             Log.d("ReactNative", "FOCUS_MODE_EDOF, " + String.valueOf(modes.contains(Camera.Parameters.FOCUS_MODE_EDOF)));
 
-//            Rect focusArea = new Rect();
-//            focusArea.set(0,
-//                    0,
-//                    1,
-//                    1;
-//            ArrayList<Camera.Area> focusAreas = new ArrayList<>();
-//            focusAreas.add(new Camera.Area(focusArea, 1000));
-//
-//            mCameraParameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
-//            mCameraParameters.setFocusAreas(focusAreas);
-//            camera.setParameters(cameraParameters);
-//
-//            camera.autoFocus(this);
-
             if (autoFocus && modes.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
                 mCameraParameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
             } else if (modes.contains(Camera.Parameters.FOCUS_MODE_FIXED)) {
