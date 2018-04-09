@@ -81,6 +81,7 @@ class Camera2 extends CameraViewImpl implements MediaRecorder.OnInfoListener, Me
         public void onOpened(@NonNull CameraDevice camera) {
             mCamera = camera;
             mCallback.onCameraOpened();
+            Log.d("ReactNative", "Camera API 2 is used!");
             startCaptureSession();
         }
 
@@ -795,16 +796,20 @@ class Camera2 extends CameraViewImpl implements MediaRecorder.OnInfoListener, Me
      * Updates the internal state of auto-focus to {@link #mAutoFocus}.
      */
     void updateAutoFocus() {
+        Log.d("ReactNative", "updateAutoFocus()");
         if (mAutoFocus) {
+            Log.d("ReactNative", "mAutoFocus == true");
             int[] modes = mCameraCharacteristics.get(
                     CameraCharacteristics.CONTROL_AF_AVAILABLE_MODES);
             // Auto focus is not supported
             if (modes == null || modes.length == 0 ||
                     (modes.length == 1 && modes[0] == CameraCharacteristics.CONTROL_AF_MODE_OFF)) {
+                Log.d("ReactNative", "not supported");
                 mAutoFocus = false;
                 mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE,
                         CaptureRequest.CONTROL_AF_MODE_OFF);
             } else {
+                Log.d("ReactNative", "CONTROL_AF_MODE_CONTINUOUS_PICTURE");
                 mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE,
                         CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
             }
