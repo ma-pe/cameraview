@@ -23,6 +23,7 @@ import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.os.Build;
 import android.support.v4.util.SparseArrayCompat;
+import android.util.Log;
 import android.view.SurfaceHolder;
 
 import java.io.File;
@@ -120,6 +121,7 @@ class Camera1 extends CameraViewImpl implements MediaRecorder.OnInfoListener,
 
     @Override
     boolean start() {
+        Log.d("ReactNative", "Camera API 1 is used!");
         chooseCamera();
         if (!openCamera()) {
             mCallback.onMountError();
