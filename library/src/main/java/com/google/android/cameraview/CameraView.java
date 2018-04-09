@@ -114,7 +114,8 @@ public class CameraView extends FrameLayout {
             mImpl = new Camera2(mCallbacks, preview, context);
             Log.d("ReactNative", "API 2");
         } else {
-            mImpl = new Camera2Api23(mCallbacks, preview, context);
+            mImpl = new Camera2(mCallbacks, preview, context);
+            //mImpl = new Camera2Api23(mCallbacks, preview, context);
             Log.d("ReactNative", "API 2 - 23");
         }
 
