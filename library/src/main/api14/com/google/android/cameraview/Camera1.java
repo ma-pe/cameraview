@@ -615,9 +615,11 @@ class Camera1 extends CameraViewImpl implements MediaRecorder.OnInfoListener,
      * @return {@code true} if {@link #mCameraParameters} was modified.
      */
     private boolean setAutoFocusInternal(boolean autoFocus) {
+        Log.d("ReactNative", "setAutoFocusInternal() " + String.valueOf(autoFocus));
         mAutoFocus = autoFocus;
         if (isCameraOpened()) {
             final List<String> modes = mCameraParameters.getSupportedFocusModes();
+            Log.d("ReactNative", "FOCUS_MODE_CONTINUOUS_PICTURE, " + String.valueOf(modes.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)));
             if (autoFocus && modes.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
                 mCameraParameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
             } else if (modes.contains(Camera.Parameters.FOCUS_MODE_FIXED)) {
