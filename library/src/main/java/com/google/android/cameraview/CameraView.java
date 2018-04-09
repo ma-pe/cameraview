@@ -29,6 +29,7 @@ import android.support.v4.os.ParcelableCompat;
 import android.support.v4.os.ParcelableCompatCreatorCallbacks;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.graphics.SurfaceTexture;
@@ -104,12 +105,17 @@ public class CameraView extends FrameLayout {
         // Internal setup
         final PreviewImpl preview = createPreviewImpl(context);
         mCallbacks = new CallbackBridge();
+        Log.d("ReactNative", "fallbackToOldApi? " + String.valueOf(fallbackToOldApi));
+        Log.d("ReactNative", "Build.VERSION.SDK_INT? " + String.valueOf(Build.VERSION.SDK_INT));
         if (fallbackToOldApi || Build.VERSION.SDK_INT < 21) {
             mImpl = new Camera1(mCallbacks, preview);
+            Log.d("ReactNative", "API 1");
         } else if (Build.VERSION.SDK_INT < 23) {
             mImpl = new Camera2(mCallbacks, preview, context);
+            Log.d("ReactNative", "API 2");
         } else {
             mImpl = new Camera2Api23(mCallbacks, preview, context);
+            Log.d("ReactNative", "API 2 - 23");
         }
 
         // Display orientation detector
