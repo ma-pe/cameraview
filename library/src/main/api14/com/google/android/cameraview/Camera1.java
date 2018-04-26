@@ -621,13 +621,6 @@ class Camera1 extends CameraViewImpl implements MediaRecorder.OnInfoListener,
         mAutoFocus = autoFocus;
         if (isCameraOpened()) {
             final List<String> modes = mCameraParameters.getSupportedFocusModes();
-            Log.d("ReactNative", "FOCUS_MODE_CONTINUOUS_PICTURE, " + String.valueOf(modes.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)));
-            Log.d("ReactNative", "FOCUS_MODE_CONTINUOUS_VIDEO, " + String.valueOf(modes.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)));
-            Log.d("ReactNative", "FOCUS_MODE_AUTO, " + String.valueOf(modes.contains(Camera.Parameters.FOCUS_MODE_AUTO)));
-            Log.d("ReactNative", "FOCUS_MODE_FIXED, " + String.valueOf(modes.contains(Camera.Parameters.FOCUS_MODE_FIXED)));
-            Log.d("ReactNative", "FOCUS_MODE_INFINITY, " + String.valueOf(modes.contains(Camera.Parameters.FOCUS_MODE_INFINITY)));
-            Log.d("ReactNative", "FOCUS_MODE_MACRO, " + String.valueOf(modes.contains(Camera.Parameters.FOCUS_MODE_MACRO)));
-            Log.d("ReactNative", "FOCUS_MODE_EDOF, " + String.valueOf(modes.contains(Camera.Parameters.FOCUS_MODE_EDOF)));
 
             if (autoFocus && modes.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
                 mCameraParameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
